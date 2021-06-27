@@ -7,18 +7,15 @@
         </template>
 
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="px-8 md:px-0">
-                    <div
-                        class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-6"
-                    >
-                        <div
-                            v-for="product in products"
-                            :key="product.product_id"
-                        >
-                            {{ product }}
-                        </div>
-                    </div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div
+                    class="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-6"
+                >
+                    <ProductCard
+                        v-for="product in products"
+                        :key="product.product_id"
+                        :product="product"
+                    />
                 </div>
             </div>
         </div>
@@ -27,25 +24,14 @@
 
 <script>
 import AppLayout from '@/Layouts/AppLayout';
-import JetButton from '@/Jetstream/Button';
 import ProductCard from './ProductCard';
 
 export default {
-    name: 'ProductIndex',
+    props: ['products'],
 
-    props: {
-        products: {
-            type: Array,
-            required: true,
-        },
-    },
-
-    components: [AppLayout, JetButton, ProductCard],
-
-    data() {
-        return {};
+    components: {
+        AppLayout,
+        ProductCard,
     },
 };
 </script>
-
-<style lang="css" scoped></style>

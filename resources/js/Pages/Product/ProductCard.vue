@@ -1,6 +1,14 @@
 <template>
     <div
-        class="bg-white transition ease-in-out duration-300 shadow hover:shadow-lg rounded-lg"
+        class="
+            bg-white
+            transition
+            ease-in-out
+            duration-300
+            shadow
+            hover:shadow-lg
+            rounded-lg
+        "
     >
         <img
             :src="product.image_url"
@@ -18,15 +26,35 @@
                     {{ product.price }}
                 </p>
 
-                <jet-button>Add to Cart</jet-button>
+                <button
+                    type="button"
+                    class="
+                        tracking-tighter
+                        leading-none
+                        uppercase
+                        font-semibold
+                        text-xs
+                        opacity-75
+                        hover:opacity-100
+                        focus:outline-none focus:opacity-100
+                        active:opacity-100
+                    "
+                    @click.stop="addToCard"
+                    :disabled="isCartProcessing"
+                >
+                    Add to Cart
+                </button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { useForm } from "@inertiajs/inertia-vue3";
+import { computed } from "@vue/runtime-core";
+
 export default {
-    name: 'ProductCard',
+    name: "ProductCard",
 
     props: {
         product: {
@@ -35,8 +63,20 @@ export default {
         },
     },
 
-    data() {
-        return {};
+    setup(props) {
+        const form = useForm({ quantity: 1 });
+
+        const isCartProcessing = computed(() => form.processing);
+
+        function addToCard() {
+            form.post(
+                route("product.carts.store", {
+                    product: props.product.product_id,
+                })
+            );
+        }
+
+        return { addToCard, isCartProcessing };
     },
 };
 </script>

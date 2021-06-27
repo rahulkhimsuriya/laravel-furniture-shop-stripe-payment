@@ -2,17 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Product;
+use App\Models\Cart;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ProductFactory extends Factory
+class CartFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Product::class;
+    protected $model = Cart::class;
 
     /**
      * Define the model's default state.
@@ -22,9 +23,9 @@ class ProductFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word(),
-            'image' => 'fake-image-name.jpg',
-            'name' => random_int(10000, 10000000)
+            'user_id' => User::factory()->create(),
+            'product_id' => Product::factory()->create(),
+            'quantity' => random_int(1, 10),
         ];
     }
 }

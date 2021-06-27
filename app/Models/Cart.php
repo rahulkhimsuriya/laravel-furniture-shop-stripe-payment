@@ -13,6 +13,13 @@ class Cart extends Model
 
     protected $fillable = ['user_id', 'product_id', 'quantity'];
 
+    protected $appends = ['total_amount'];
+
+    public function getTotalAmountAttribute()
+    {
+        return round((($this->quantity * $this->product->price) / 100), 2);
+    }
+
     public function product()
     {
         return $this->belongsTo(Product::class);

@@ -25,9 +25,28 @@ class Product extends Model
         return $this->hasMany(Cart::class);
     }
 
+    public function isInCart()
+    {
+        return $this->carts()
+            ->where([
+                'product_id' => $this->id,
+                'user_id' => auth()->user()->id,
+            ])
+            ->first();
+    }
+
+    public function updateCart($cart, $quantity = 1)
+    {
+        return tap($cart, fn () => $cart->increment('quantity', $quantity));
+    }
+
     public function addToCart($user = null, $quantity = 1)
     {
         $user = $user  ?? auth()->user();
+
+        if ($cart = $this->isInCart()) {
+            return $this->updateCart($cart, $quantity);
+        }
 
         return $this->carts()->create([
             'user_id' => $user->id,

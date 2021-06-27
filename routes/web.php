@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductCartController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,9 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 	Route::get('/products', [ProductController::class, 'index'])->name('dashboard');
+
+	Route::get('/carts', [CartController::class, 'index'])->name('carts.index');
+	Route::delete('/carts/{cart}', [CartController::class, 'destroy'])->name('carts.destroy');
 
 	Route::post('/products/{product}/carts', [ProductCartController::class, 'store'])
 		->name('product.carts.store');

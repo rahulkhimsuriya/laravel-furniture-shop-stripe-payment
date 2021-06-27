@@ -24243,7 +24243,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "\r\n            bg-white\r\n            transition\r\n            ease-in-out\r\n            duration-300\r\n            shadow\r\n            hover:shadow-lg\r\n            rounded-lg\r\n        "
+  "class": "\r\n      bg-white\r\n      transition\r\n      ease-in-out\r\n      duration-300\r\n      shadow\r\n      hover:shadow-lg\r\n      rounded-lg\r\n    "
 };
 var _hoisted_2 = {
   "class": "px-4 pt-4 pb-2 rounded-lg"
@@ -24268,7 +24268,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("img", {
     src: $props.product.image_url,
     alt: $props.product.name,
-    "class": "h-64 w-full object-fit object-center rounded-lg"
+    "class": "h-64 w-full object-fit object-center rounded-t-lg"
   }, null, 8
   /* PROPS */
   , ["src", "alt"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h3", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.product.name), 1
@@ -24277,7 +24277,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
     type: "button",
-    "class": "\r\n                        tracking-tighter\r\n                        leading-none\r\n                        uppercase\r\n                        font-semibold\r\n                        text-xs\r\n                        opacity-75\r\n                        hover:opacity-100\r\n                        focus:outline-none focus:opacity-100\r\n                        active:opacity-100\r\n                    ",
+    "class": "\r\n            tracking-tighter\r\n            leading-none\r\n            uppercase\r\n            font-semibold\r\n            text-xs\r\n            opacity-75\r\n            hover:opacity-100\r\n            focus:outline-none\r\n            focus:opacity-100\r\n            active:opacity-100\r\n          ",
     onClick: _cache[1] || (_cache[1] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $setup.addToCard && $setup.addToCard.apply($setup, arguments);
     }, ["stop"])),

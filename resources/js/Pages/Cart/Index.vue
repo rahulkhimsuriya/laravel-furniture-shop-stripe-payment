@@ -221,7 +221,11 @@
             </div>
 
             <div class="w-full mt-4">
-              <jet-button type="button" class="rounded-none">
+              <jet-button
+                type="button"
+                @click="processPayment"
+                :disabled="isPaymentProcessing"
+              >
                 Process Payment
               </jet-button>
             </div>
@@ -233,9 +237,12 @@
 </template>
 
 <script>
+import { loadStripe } from "@stripe/stripe-js";
 import { Inertia } from "@inertiajs/inertia";
+import { usePage } from "@inertiajs/inertia-vue3";
 import AppLayout from "@/Layouts/AppLayout";
 import JetButton from "@/Jetstream/Button";
+import { ref } from "vue";
 
 export default {
   name: "CartIndex",
@@ -247,14 +254,53 @@ export default {
     JetButton,
   },
 
-  setup() {
-    function removeFromCart(cart) {
-      Inertia.delete(route("carts.destroy", { cart: cart.cart_id }));
-    }
-
-    return { removeFromCart };
+  setup(props) {
+    return { ...useCartScope(), ...useStripeCheckoutScope(props) };
   },
 };
+
+// Stripe Checkout Scope
+function useStripeCheckoutScope(props) {
+  const isPaymentProcessing = ref(false);
+
+  const stripeKey = usePage().props.value.stripeKey;
+  const stripePromise = loadStripe(stripeKey);
+
+  async function processPayment() {
+    isPaymentProcessing.value = true;
+
+    const stripe = await stripePromise;
+
+    fetch("/payments", { method: "POST" })
+      .then((response) => response.json())
+      .then((session) => {
+        isPaymentProcessing.value = false;
+
+        // When the customer clicks on the button, redirect them to Checkout.
+        stripe.redirectToCheckout({
+          sessionId: session.id,
+        });
+      })
+      .catch((error) => {
+        isPaymentProcessing.value = false;
+        console.log(error);
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer
+        // using `result.error.message`.
+      });
+  }
+
+  return { isPaymentProcessing, processPayment };
+}
+
+// Cart Scope
+function useCartScope() {
+  function removeFromCart(cart) {
+    Inertia.delete(route("carts.destroy", { cart: cart.cart_id }));
+  }
+
+  return { removeFromCart };
+}
 </script>
 
 <style lang="scss" scoped></style>

@@ -4,6 +4,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductCartController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,4 +28,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
 	Route::post('/products/{product}/carts', [ProductCartController::class, 'store'])
 		->name('product.carts.store');
+
+	Route::post('/payments', [PaymentController::class, 'store'])->name('payments.store');
 });

@@ -7,9 +7,9 @@
     <div class="py-12">
       <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="" v-if="carts.length <= 0">
-          <div>
+          <div class="max-w-sm mx-auto">
             <img
-              src="/illustrations/checkout.svg"
+              src="/illustrations/undraw_checkout.svg"
               alt="checkout"
               class="max-h-64 w-auto"
             />

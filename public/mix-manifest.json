@@ -1,5 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/illustrations/checkout.svg": "/illustrations/checkout.svg"
+    "/illustrations/checkout.svg": "/illustrations/checkout.svg",
+    "/illustrations/undraw_checkout.svg": "/illustrations/undraw_checkout.svg",
+    "/illustrations/undraw_payment_failed.svg": "/illustrations/undraw_payment_failed.svg",
+    "/illustrations/undraw_payment_success.svg": "/illustrations/undraw_payment_success.svg"
 }

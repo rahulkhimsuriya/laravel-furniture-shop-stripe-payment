@@ -8,11 +8,6 @@ import {
 } from "@inertiajs/inertia-vue3";
 import { InertiaProgress } from "@inertiajs/progress";
 
-InertiaProgress.init({
-    // The color of the progress bar.
-    color: "rgba(99, 102, 241,1)", // indigo-500
-});
-
 const el = document.getElementById("app");
 
 createApp({
@@ -26,4 +21,4 @@ createApp({
     .use(InertiaPlugin)
     .mount(el);
 
-InertiaProgress.init({ color: "#4B5563" });
+InertiaProgress.init({ color: "#6866f1" });

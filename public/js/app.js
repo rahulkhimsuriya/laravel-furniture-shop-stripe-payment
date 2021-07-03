@@ -26142,11 +26142,6 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // Import
 
 
 
-_inertiajs_progress__WEBPACK_IMPORTED_MODULE_2__.InertiaProgress.init({
-  // The color of the progress bar.
-  color: "rgba(99, 102, 241,1)" // indigo-500
-
-});
 var el = document.getElementById("app");
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
   render: function render() {
@@ -26163,7 +26158,7 @@ var el = document.getElementById("app");
   }
 }).use(_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.plugin).mount(el);
 _inertiajs_progress__WEBPACK_IMPORTED_MODULE_2__.InertiaProgress.init({
-  color: "#4B5563"
+  color: "#6866f1"
 });
 
 /***/ }),

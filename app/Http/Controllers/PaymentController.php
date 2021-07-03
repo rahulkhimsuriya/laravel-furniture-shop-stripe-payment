@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\StripeService;
+use Inertia\Inertia;
 
 class PaymentController extends Controller
 {
@@ -18,9 +19,10 @@ class PaymentController extends Controller
     {
         $carts = $request->user()->carts->load('product');
 
-        $items = $this->getProducts($carts);
-
-        $stripeSession = $this->stripeService->generateCheckoutSession($items);
+        $stripeSession = $this->stripeService->generateCheckoutSession(
+            $this->getProducts($carts),
+            $request->user()->stripe_id
+        );
 
         return response()->json(['id' => $stripeSession->id], 200);
     }

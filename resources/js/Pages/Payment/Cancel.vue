@@ -13,8 +13,8 @@
             object-cover object-center
             rounded
           "
-          alt="payment success"
-          src="/illustrations/undraw_payment_success.svg"
+          alt="payment failed"
+          src="/illustrations/undraw_payment_failed.svg"
         />
 
         <div class="text-center lg:w-2/3 w-full">
@@ -25,10 +25,10 @@
               text-3xl
               mb-4
               font-medium
-              text-indigo-600
+              text-red-600
             "
           >
-            Payment Successfull
+            Payment Failed
           </h1>
 
           <div class="flex justify-center">

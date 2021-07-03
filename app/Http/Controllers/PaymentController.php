@@ -34,7 +34,7 @@ class PaymentController extends Controller
 
     public function cancel()
     {
-        return response()->json(['sucess' => false, 'message' => 'payment failed.']);
+        return Inertia::render('Payment/Cancel');
     }
 
     private function getProducts($carts)

@@ -30,4 +30,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 		->name('product.carts.store');
 
 	Route::post('/payments', [PaymentController::class, 'store'])->name('payments.store');
+	Route::get('/payments/success', [PaymentController::class, 'success'])->name('payments.success');
+	Route::get('/payments/cancel', [PaymentController::class, 'cancel'])->name('payments.cancel');
 });

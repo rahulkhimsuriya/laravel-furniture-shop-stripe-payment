@@ -226,7 +226,7 @@
                 @click="processPayment"
                 :disabled="isPaymentProcessing"
               >
-                Process Payment
+                {{ isPaymentProcessing ? "Processing..." : "Process Payment" }}
               </jet-button>
             </div>
           </div>
@@ -274,16 +274,16 @@ function useStripeCheckoutScope(props) {
     fetch("/payments", { method: "POST" })
       .then((response) => response.json())
       .then((session) => {
-        isPaymentProcessing.value = false;
-
         // When the customer clicks on the button, redirect them to Checkout.
         stripe.redirectToCheckout({
           sessionId: session.id,
         });
+
+        isPaymentProcessing.value = false;
       })
       .catch((error) => {
         isPaymentProcessing.value = false;
-        console.log(error);
+
         // If `redirectToCheckout` fails due to a browser or network
         // error, display the localized error message to your customer
         // using `result.error.message`.

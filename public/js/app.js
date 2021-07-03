@@ -20158,14 +20158,13 @@ function useStripeCheckoutScope(props) {
               }).then(function (response) {
                 return response.json();
               }).then(function (session) {
-                isPaymentProcessing.value = false; // When the customer clicks on the button, redirect them to Checkout.
-
+                // When the customer clicks on the button, redirect them to Checkout.
                 stripe.redirectToCheckout({
                   sessionId: session.id
                 });
-              })["catch"](function (error) {
                 isPaymentProcessing.value = false;
-                console.log(error); // If `redirectToCheckout` fails due to a browser or network
+              })["catch"](function (error) {
+                isPaymentProcessing.value = false; // If `redirectToCheckout` fails due to a browser or network
                 // error, display the localized error message to your customer
                 // using `result.error.message`.
               });
@@ -24260,9 +24259,6 @@ var _hoisted_34 = {
 var _hoisted_35 = {
   "class": "w-full mt-4"
 };
-
-var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Process Payment ");
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jet_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jet-button");
 
@@ -24308,7 +24304,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         disabled: _ctx.isPaymentProcessing
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [_hoisted_36];
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.isPaymentProcessing ? "Processing..." : "Process Payment"), 1
+          /* TEXT */
+          )];
         }),
         _: 1
         /* STABLE */

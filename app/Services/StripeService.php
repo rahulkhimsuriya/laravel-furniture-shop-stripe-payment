@@ -13,14 +13,14 @@ class StripeService
 		Stripe::setApiKey(config('services.stripe.secret'));
 	}
 
-	public function generateCheckoutSession(array $items, array $paymetMethodTypes =  ['card'], $mode = 'payment')
+	public function generateCheckoutSession(array $items)
 	{
 		return StripeSsession::create([
-			'payment_method_types' => $paymetMethodTypes,
+			'payment_method_types' => ['card'],
 			'line_items' => $items,
-			'mode' => $mode,
-			'success_url' => "/paymets?success",
-			'cancel_url' => "/paymets?success",
+			'mode' => 'payment',
+			'success_url' => route('payments.sucess'),
+			'cancel_url' => route('payments.cancel'),
 		]);
 	}
 }

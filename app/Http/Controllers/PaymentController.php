@@ -29,7 +29,7 @@ class PaymentController extends Controller
 
     public function success()
     {
-        return response()->json(['sucess' => true, 'message' => 'payment sucessfull.']);
+        return Inertia::render('Payment/Success');
     }
 
     public function cancel()

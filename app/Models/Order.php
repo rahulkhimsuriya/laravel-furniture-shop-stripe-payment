@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -27,5 +28,15 @@ class Order extends Model
     public function orderDetails()
     {
         return $this->hasMany(OrderDetail::class)->latest();
+    }
+
+    public function getCreatedAtAttribute($value)
+    {
+        return Carbon::parse($value)->format('Y-m-d');
+    }
+
+    public function getAmountAttribute($value)
+    {
+        return number_format($value / 100, 2);
     }
 }

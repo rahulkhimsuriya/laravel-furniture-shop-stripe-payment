@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductCartController;
 use App\Http\Controllers\PaymentController;
@@ -35,4 +36,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 	Route::post('/payments', [PaymentController::class, 'store'])->name('payments.store');
 	Route::get('/payments/success', [PaymentController::class, 'success'])->name('payments.success');
 	Route::get('/payments/cancel', [PaymentController::class, 'cancel'])->name('payments.cancel');
+
+	Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 });

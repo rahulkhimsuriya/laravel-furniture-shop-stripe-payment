@@ -16,13 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->create([
-            'name' => 'John Doe',
-            'email' => 'johndoe@example.com'
-        ]);
-
-        Product::factory(6)
-        ->state(new Sequence(
+        Product::factory(6)->state(new Sequence(
             [
                 'name' => 'Sofa (Black)',
                 'image' => 'black-sofa-unsplash.jpg',
@@ -54,6 +48,6 @@ class DatabaseSeeder extends Seeder
                 'price' => '3500000'
             ],
         ))
-        ->create();
+            ->create();
     }
 }

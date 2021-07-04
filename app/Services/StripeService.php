@@ -31,13 +31,14 @@ class StripeService
 	/**
 	 * Generate Checkout Sesstion
 	 */
-	public function generateCheckoutSession(array $items, $customerId = null)
+	public function generateCheckoutSession(array $items, $customerId = null, $metadata = [])
 	{
 		return StripeSsession::create([
 			'customer' => $customerId,
 			'payment_method_types' => ['card'],
 			'line_items' => $items,
 			'mode' => 'payment',
+			'metadata' => $metadata,
 			'success_url' => route('payments.success'),
 			'cancel_url' => route('payments.cancel'),
 		]);

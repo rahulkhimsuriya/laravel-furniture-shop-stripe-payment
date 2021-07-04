@@ -10,18 +10,24 @@ class PaymentController extends Controller
 {
     protected $stripeService;
 
-    public function __construct(StripeService $stripeService)
+    public function __construct()
     {
-        $this->stripeService = $stripeService;
+        $this->stripeService = resolve('stripeService');
     }
 
     public function store(Request $request)
     {
         $carts = $request->user()->carts->load('product');
 
+        $metadata = [
+            'user_id' => auth()->id(),
+            'cart_ids' => $carts->pluck('id')
+        ];
+
         $stripeSession = $this->stripeService->generateCheckoutSession(
             $this->getProducts($carts),
-            $request->user()->stripe_id
+            $request->user()->stripe_id,
+            $metadata,
         );
 
         return response()->json(['id' => $stripeSession->id], 200);

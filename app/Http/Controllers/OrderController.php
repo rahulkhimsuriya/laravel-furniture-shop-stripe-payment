@@ -12,7 +12,7 @@ class OrderController extends Controller
     {
         return Inertia::render('Order/Index', [
             'orders' => Order::with('orderDetails.product')
-                ->paginate(1)
+                ->paginate(10)
                 ->withQueryString()
         ]);
     }

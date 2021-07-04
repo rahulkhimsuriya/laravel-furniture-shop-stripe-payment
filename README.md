@@ -69,7 +69,7 @@ STRIPE_WEBHOOK_SECRET=
 Setup [stripe webhook](https://stripe.com/docs/connect/webhooks) configuration:
 
 1. Add new `webhook endpoint`
-2. Select event **`payment_intent.succeeded`**
+2. Select event **`checkout.session.completed`**
 
 Run the dev server (the output will give the address):
 

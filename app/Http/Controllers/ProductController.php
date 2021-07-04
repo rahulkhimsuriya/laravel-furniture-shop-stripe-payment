@@ -14,7 +14,7 @@ class ProductController extends Controller
                 return [
                     'product_id' => $product->id,
                     'name' => $product->name,
-                    'price' => round($product->price / 100, 2),
+                    'price' => number_format($product->price / 100, 2),
                     'image_url' => $product->image_url,
                 ];
             })

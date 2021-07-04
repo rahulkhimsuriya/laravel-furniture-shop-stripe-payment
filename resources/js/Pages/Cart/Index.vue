@@ -234,6 +234,7 @@
                 </div>
 
                 <h3 class="text-xl font-semibold text-indigo-500">
+                  <span class="mr-0.5">&#8377;</span>
                   {{ totalAmount }}
                 </h3>
               </div>

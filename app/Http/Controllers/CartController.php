@@ -13,21 +13,20 @@ class CartController extends Controller
         $carts = $request->user()->carts->load('product');
 
         $totalAmount = $carts->map(function ($cart) {
-
-            return $cart->quantity * $cart->product->price;
+            return ($cart->quantity * $cart->product->price);
         })->sum();
 
         return Inertia::render('Cart/Index', [
-            'totalAmount' => round(($totalAmount / 100), 2),
+            'totalAmount' => number_format(($totalAmount / 100), 2),
             'carts' => $carts->map(function ($cart) {
                 return [
                     'cart_id' => $cart->id,
                     'quantity' => $cart->quantity,
-                    'total_amount' => $cart->total_amount,
+                    'total_amount' => number_format($cart->total_amount, 2),
                     'product' => [
                         'product_id' => $cart->product->id,
                         'name' => $cart->product->name,
-                        'price' => round($cart->product->price / 100, 2),
+                        'price' => number_format($cart->product->price / 100, 2),
                         'image_url' => $cart->product->image_url,
                     ]
                 ];

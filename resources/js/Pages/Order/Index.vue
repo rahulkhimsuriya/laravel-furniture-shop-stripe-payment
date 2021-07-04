@@ -145,7 +145,6 @@
                               {{ order.currency }}
                             </span>
                           </div>
-                          <div class="text-sm text-gray-500"></div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">
                           <span

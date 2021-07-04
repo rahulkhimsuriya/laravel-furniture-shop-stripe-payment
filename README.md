@@ -5,9 +5,9 @@ A demo application to learn stripe integration.
 ## Installation
 
 ```sh
-git clone https://github.com/rahulkhimsuriya/laravel-furniture-shop-stripe-paymet.git
+git clone https://github.com/rahulkhimsuriya/laravel-furniture-shop-stripe-payment.git
 
-cd laravel-furniture-shop-stripe-paymet
+cd laravel-furniture-shop-stripe-payment
 ```
 
 Install PHP dependencies:

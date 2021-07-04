@@ -18,6 +18,7 @@ mix.js("resources/js/app.js", "public/js")
         require("tailwindcss"),
     ])
     .copyDirectory("resources/illustrations", "public/illustrations")
+    .copyDirectory("resources/product_images", "public/product_images")
     .webpackConfig(require("./webpack.config"));
 
 if (mix.inProduction()) {

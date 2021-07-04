@@ -77,9 +77,4 @@ Run the dev server (the output will give the address):
 php artisan serve
 ```
 
-You're ready to go! Visit [**`Furniture Shop`**](http://localhost:8000) in your browser, and login with:
-
--   **Username:** johndoe@example.com
--   **Password:** password
-
 ## Thank you.
